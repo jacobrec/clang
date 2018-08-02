@@ -317,6 +317,10 @@ void TypePrinter::printAfter(const Type *T, Qualifiers Quals, raw_ostream &OS) {
   }
 }
 
+void TypePrinter::printVariantBefore(const VariantType *T, raw_ostream &OS) {
+}
+void TypePrinter::printVariantAfter(const VariantType *T, raw_ostream &OS) { }
+
 void TypePrinter::printBuiltinBefore(const BuiltinType *T, raw_ostream &OS) {
   OS << T->getName(Policy);
   spaceBeforePlaceHolder(OS);

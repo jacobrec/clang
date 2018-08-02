@@ -1887,6 +1887,11 @@ void MicrosoftCXXNameMangler::mangleType(const BuiltinType *T, Qualifiers,
   }
 }
 
+void MicrosoftCXXNameMangler::mangleType(const VariantType *T,
+                                         Qualifiers, SourceRange) {
+  Out << "NoManglingHere";
+}
+
 // <type>          ::= <function-type>
 void MicrosoftCXXNameMangler::mangleType(const FunctionProtoType *T, Qualifiers,
                                          SourceRange) {

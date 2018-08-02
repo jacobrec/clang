@@ -661,6 +661,29 @@ public:
   }
 };
 
+struct VariantLocInfo {
+  SourceRange VariantRange;
+};
+
+class VariantTypeLoc : public ConcreteTypeLoc<UnqualTypeLoc,
+                                              VariantTypeLoc,
+                                              VariantType,
+                                              VariantLocInfo> {
+                                              
+public:
+  void setVariantLoc(SourceLocation Loc) {
+    getLocalData()->VariantRange = Loc;
+  }
+
+  SourceLocation getVariantLoc() const {
+    return getLocalData()->VariantRange.getBegin();
+  }
+
+  void initializeLocal(ASTContext &Context, SourceLocation Loc) {
+    setVariantLoc(Loc);
+  }
+};
+
 /// \brief Wrapper for source info for typedefs.
 class TypedefTypeLoc : public InheritingConcreteTypeLoc<TypeSpecTypeLoc,
                                                         TypedefTypeLoc,

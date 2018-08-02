@@ -5314,6 +5314,10 @@ namespace {
           TL.expandBuiltinRange(DS.getTypeSpecWidthRange());
       }
     }
+    void VisitVariantTypeLoc(VariantTypeLoc TL) {
+      // By default, use the source location of the type specifier.
+      TL.setVariantLoc(DS.getTypeSpecTypeLoc());
+    }
     void VisitElaboratedTypeLoc(ElaboratedTypeLoc TL) {
       ElaboratedTypeKeyword Keyword
         = TypeWithKeyword::getKeywordForTypeSpec(DS.getTypeSpecType());

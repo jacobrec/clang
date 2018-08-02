@@ -587,6 +587,10 @@ void TypeLocWriter::VisitQualifiedTypeLoc(QualifiedTypeLoc TL) {
   // nothing to do
 }
 
+void TypeLocWriter::VisitVariantTypeLoc(VariantTypeLoc TL) {
+  Record.AddSourceLocation(TL.getVariantLoc());
+}
+
 void TypeLocWriter::VisitBuiltinTypeLoc(BuiltinTypeLoc TL) {
   Record.AddSourceLocation(TL.getBuiltinLoc());
   if (TL.needsExtraLocalData()) {

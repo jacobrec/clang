@@ -623,6 +623,10 @@ public:
     VisitType(T);
   }
 
+  void VisitVariantType(const VariantType *T) {
+    VisitType(T);
+  }
+
   void VisitFunctionType(const FunctionType *T) {
     AddQualType(T->getReturnType());
     T->getExtInfo().Profile(ID);

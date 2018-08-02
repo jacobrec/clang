@@ -2138,6 +2138,21 @@ template <> inline const Class##Type *Type::castAs() const { \
 }
 #include "clang/AST/TypeNodes.def"
 
+/// This class is for variant types, cause by variantdecls
+class VariantType : public Type {
+public:
+  VariantType()
+      : Type(Variant, QualType(), /*Dependent=*/false,
+             /*InstantiationDependent=*/true,
+             /*VariablyModified=*/false,
+             /*Unexpanded parameter pack=*/false) {
+  }
+
+  bool isSugared() const { return false; }
+  QualType desugar() const { return QualType(this, 0); }
+  static bool classof(const Type *T) { return T->getTypeClass() == Variant; }
+};
+
 /// This class is used for builtin types like 'int'.  Builtin
 /// types are always canonical and have a literal name field.
 class BuiltinType : public Type {

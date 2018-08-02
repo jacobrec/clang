@@ -5135,6 +5135,10 @@ bool UnnamedLocalNoLinkageFinder::VisitBuiltinType(const BuiltinType*) {
   return false;
 }
 
+bool UnnamedLocalNoLinkageFinder::VisitVariantType(const VariantType*) {
+  return false;
+}
+
 bool UnnamedLocalNoLinkageFinder::VisitComplexType(const ComplexType* T) {
   return Visit(T->getElementType());
 }

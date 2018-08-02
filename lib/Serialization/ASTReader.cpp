@@ -6402,6 +6402,10 @@ void TypeLocReader::VisitQualifiedTypeLoc(QualifiedTypeLoc TL) {
   // nothing to do
 }
 
+void TypeLocReader::VisitVariantTypeLoc(VariantTypeLoc TL) {
+  TL.setVariantLoc(ReadSourceLocation());
+}
+
 void TypeLocReader::VisitBuiltinTypeLoc(BuiltinTypeLoc TL) {
   TL.setBuiltinLoc(ReadSourceLocation());
   if (TL.needsExtraLocalData()) {

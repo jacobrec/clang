@@ -1204,6 +1204,10 @@ public:
 
   /// \brief Return the uniqued reference to the atomic type for the specified
   /// type.
+  QualType getVariantType(QualType T) const;
+
+  /// \brief Return the uniqued reference to the atomic type for the specified
+  /// type.
   QualType getAtomicType(QualType T) const;
 
   /// \brief Return the uniqued reference to the type for a block of the

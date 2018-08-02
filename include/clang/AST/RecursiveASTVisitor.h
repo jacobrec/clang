@@ -949,6 +949,8 @@ bool RecursiveASTVisitor<Derived>::TraverseLambdaBody(
 
 DEF_TRAVERSE_TYPE(BuiltinType, {})
 
+DEF_TRAVERSE_TYPE(VariantType, {})
+
 DEF_TRAVERSE_TYPE(ComplexType, { TRY_TO(TraverseType(T->getElementType())); })
 
 DEF_TRAVERSE_TYPE(PointerType, { TRY_TO(TraverseType(T->getPointeeType())); })
@@ -1144,6 +1146,8 @@ RecursiveASTVisitor<Derived>::TraverseQualifiedTypeLoc(QualifiedTypeLoc TL) {
 }
 
 DEF_TRAVERSE_TYPELOC(BuiltinType, {})
+
+DEF_TRAVERSE_TYPELOC(VariantType, {})
 
 // FIXME: ComplexTypeLoc is unfinished
 DEF_TRAVERSE_TYPELOC(ComplexType, {

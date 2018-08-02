@@ -2638,6 +2638,10 @@ StringRef CXXNameMangler::getCallingConvQualifierName(CallingConv CC) {
   llvm_unreachable("bad calling convention");
 }
 
+void CXXNameMangler::mangleType(const VariantType *T) {
+    Out << "NoManglingHere";
+}
+
 void CXXNameMangler::mangleExtFunctionInfo(const FunctionType *T) {
   // Fast path.
   if (T->getExtInfo() == FunctionType::ExtInfo())

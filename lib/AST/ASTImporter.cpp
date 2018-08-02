@@ -42,6 +42,7 @@ namespace clang {
     QualType VisitType(const Type *T);
     QualType VisitAtomicType(const AtomicType *T);
     QualType VisitBuiltinType(const BuiltinType *T);
+    QualType VisitVariantType(const VariantType *T);
     QualType VisitDecayedType(const DecayedType *T);
     QualType VisitComplexType(const ComplexType *T);
     QualType VisitPointerType(const PointerType *T);
@@ -409,6 +410,12 @@ QualType ASTNodeImporter::VisitBuiltinType(const BuiltinType *T) {
   }
 
   llvm_unreachable("Invalid BuiltinType Kind!");
+}
+
+QualType ASTNodeImporter::VisitVariantType(const VariantType *T){
+    QualType QT = T;
+
+  return Importer.getToContext().getVariantType(QT);
 }
 
 QualType ASTNodeImporter::VisitDecayedType(const DecayedType *T) {
